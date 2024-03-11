@@ -7,7 +7,6 @@ var sharedMomentsArea = document.querySelector("#fitness");
 
 var listMoves = [];
 var isOnline;
-downloadButton.addEventListener("click", openCreatePostModal());
 function openCreatePostModal() {
   if (deferredPrompt) {
     deferredPrompt.prompt();
@@ -57,30 +56,25 @@ function createCard(data) {
   cardWrapper.addEventListener("click", async function (event) {
     event.preventDefault();
     const test = `https://ambw-c3a79-default-rtdb.asia-southeast1.firebasedatabase.app/tes1/${data.id}.json`;
-
-    const fetchDetail = async () => {
-      const response = await fetch(test);
-      if (!response.ok || !navigator.onLine) throw new Error("Fetch error");
-      return response.json();
-    };
-
-    const goToDetailPage = (detail) => {
-      localStorage.setItem("i", JSON.stringify(detail));
-      localStorage.setItem(data.id, JSON.stringify(detail));
+    const handleResponse = async (response) => {
+      if (!response.ok) {
+        throw new Error("Fetch error");
+      }
+      const detail = await response.json();
+      localStorage.setItem("i", JSON.stringify(data));
+      localStorage.setItem(data.id, JSON.stringify(data));
       window.location.href = "detail.html";
     };
 
-    const detailInLocal = localStorage.getItem(data.id);
-
-    if (detailInLocal) {
-      goToDetailPage(JSON.parse(detailInLocal));
+    if (!localStorage.getItem(data.id)) {
+      fetch(test)
+        .then(handleResponse)
+        .catch((error) => {
+          window.location.href = "offline.html";
+        });
     } else {
-      try {
-        const detail = await fetchDetail();
-        goToDetailPage(detail);
-      } catch (error) {
-        window.location.href = "offline.html";
-      }
+      localStorage.setItem("i", JSON.stringify(data));
+      window.location.href = "detail.html";
     }
   });
   componentHandler.upgradeElement(cardWrapper);

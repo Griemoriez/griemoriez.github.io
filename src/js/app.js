@@ -23,6 +23,7 @@ window.addEventListener("beforeinstallprompt", function (event) {
 });
 
 function installApp() {
+  console.log("installing");
   if (!deferredPrompt) {
     return;
   }
