@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Fit Society</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.indigo-pink.min.css"
+    />
+    <link rel="stylesheet" href="/src/css/app.css" />
+    <link rel="stylesheet" href="/src/css/feed.css" />
+    <link rel="manifest" href="/manifest.json" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="PWAGram" />
+    <link
+      rel="apple-touch-icon"
+      href="/src/images/icons/apple-icon-57x57.png"
+      sizes="57x57"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/src/images/icons/apple-icon-60x60.png"
+      sizes="60x60"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/src/images/icons/apple-icon-72x72.png"
+      sizes="72x72"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/src/images/icons/apple-icon-76x76.png"
+      sizes="76x76"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/src/images/icons/apple-icon-114x114.png"
+      sizes="114x114"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/src/images/icons/apple-icon-120x120.png"
+      sizes="120x120"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/src/images/icons/apple-icon-144x144.png"
+      sizes="144x144"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/src/images/icons/apple-icon-152x152.png"
+      sizes="152x152"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/src/images/icons/apple-icon-180x180.png"
+      sizes="180x180"
+    />
+    <meta
+      name="msapplication-TileImage"
+      content="/src/images/icons/app-icon-144x144.png"
+    />
+    <meta name="msapplication-TileColor" content="#fff" />
+    <meta name="theme-color" content="#3f51b5" />
+  </head>
+  <body>
+    <nav class="flex mx-3 max-w-full mt-4">
+      <div class="Home basis-2/3">
+        <a
+          class="text-2xl font-sans font-bold text-orange-500"
+          href="index.html"
+          ><img class="h-6" src="./src/images/dumbbell.svg" alt=""
+        /></a>
+      </div>
+      <div class="list basis-1/3 min-w-72">
+        <ul class="flex items-end float-right">
+          <li>
+            <a class="mx-4 font-bold hover:text-orange-400" href="index.html"
+              >Home</a
+            >
+          </li>
+          <li class="mx-4 font-bold hover:text-orange-400">About Us</li>
+          <li class="mx-4 font-bold hover:text-orange-400">
+            <a href="index.html">Back</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="body h-screen mx-16 mt-24 lg:flex lg:gap-16" id="body">
+      <div class="kiri lg:w-1/2 flex-1">
+        <h2
+          class="title text-4xl font-bold text-orange-600 sm:text-5xl md:text-6xl lg:text-7xl"
+        ></h2>
+        <img class="imagekiri my-7 w-full lg:hidden" src="" alt="" />
+        <p class="desc font-semibold text-slate-800 text-justify lg: mt-5"></p>
+        <div class="backtoHome mt-7">
+          <a
+            class="p-4 bg-orange-400 rounded-lg text-white text-lg"
+            href="index.html"
+            >Back to Home</a
+          >
+        </div>
+      </div>
+      <div class="kanan invisible lg:visible w-1/2">
+        <img class="imagekanan w-full object-cover" src="" alt="" />
+      </div>
+    </div>
+
+    <script>
+      var body = document.querySelector("#body");
+      var tempMoveJSON = localStorage.getItem("i");
+      var tempMove = JSON.parse(tempMoveJSON);
+      var tempImg = tempMove.image;
+      var tempName = tempMove.name;
+      var tempDesc = tempMove.desc;
+      var title = document.querySelector(".title");
+      var imagekiri = document.querySelector(".imagekiri");
+      var imagekanan = document.querySelector(".imagekanan");
+      var desc = document.querySelector(".desc");
+      title.innerHTML = tempName;
+      imagekanan.src = tempImg;
+      imagekiri.src = tempImg;
+      desc.innerHTML = tempDesc;
+    </script>
+    <script defer src="/src/js/material.min.js"></script>
+    <script src="/src/js/promise.js"></script>
+    <script src="/src/js/fetch.js"></script>
+    <script src="/src/js/idb.js"></script>
+    <script src="/src/js/utility.js"></script>
+    <script src="/src/js/app.js"></script>
+    <!-- <script src="/src/js/feed.js"></script> -->
+  </body>
+</html>
