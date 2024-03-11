@@ -1,4 +1,4 @@
-var shareImageButton = document.querySelector("#share-image-button");
+var downloadButton = document.querySelector("#download");
 var createPostArea = document.querySelector("#create-post");
 var closeCreatePostModalButton = document.querySelector(
   "#close-create-post-modal-btn"
@@ -7,9 +7,8 @@ var sharedMomentsArea = document.querySelector("#fitness");
 
 var listMoves = [];
 var isOnline;
-
+downloadButton.addEventListener("click", openCreatePostModal());
 function openCreatePostModal() {
-  createPostArea.style.display = "block";
   if (deferredPrompt) {
     deferredPrompt.prompt();
 
@@ -61,7 +60,7 @@ function createCard(data) {
 
     const fetchDetail = async () => {
       const response = await fetch(test);
-      if (!response.ok) throw new Error("Fetch error");
+      if (!response.ok || !navigator.onLine) throw new Error("Fetch error");
       return response.json();
     };
 

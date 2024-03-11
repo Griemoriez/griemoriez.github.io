@@ -23,7 +23,7 @@
     <link
       rel="icon"
       type="image/png"
-      href="src\images\icons\icon-144x144.png"
+      href="src/images/icons/icon-144x144.png"
     />
     <link rel="stylesheet" href="/src/css/app.css" />
     <link rel="stylesheet" href="/src/css/feed.css" />
@@ -55,7 +55,13 @@
         <ul class="flex items-end float-right">
           <li class="mx-4 font-bold hover:text-orange-400">Home</li>
           <li class="mx-4 font-bold hover:text-orange-400">About Us</li>
-          <li class="mx-4 font-bold hover:text-orange-400">Contact</li>
+          <button
+            id="download"
+            onclick="installApp()"
+            class="mx-4 font-bold hover:text-orange-400"
+          >
+            Download
+          </button>
         </ul>
       </div>
     </nav>
