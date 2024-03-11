@@ -109,13 +109,8 @@ fetch(url)
     var dataArray = [];
     for (var key in data) {
       dataArray.push(data[key]);
-      // console.log(key)
     }
     listMoves = dataArray;
-    // if (JSON.parse(localStorage.getItem("exploredMoves")) == null) {
-    //   var tempArr = [];
-    //   localStorage["exploredMoves"] = JSON.stringify(tempArr);
-    // }
     updateUI(dataArray);
   });
 

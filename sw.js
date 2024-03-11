@@ -7,6 +7,7 @@ var STATIC_FILES = [
   "/",
   "/index.html",
   "/offline.html",
+  "/detail.html",
   "/src/js/app.js",
   "/src/js/feed.js",
   "/src/js/idb.js",
@@ -21,18 +22,6 @@ var STATIC_FILES = [
   "https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.indigo-pink.min.css",
 ];
 
-// function trimCache(cacheName, maxItems) {
-//   caches.open(cacheName)
-//     .then(function (cache) {
-//       return cache.keys()
-//         .then(function (keys) {
-//           if (keys.length > maxItems) {
-//             cache.delete(keys[0])
-//               .then(trimCache(cacheName, maxItems));
-//           }
-//         });
-//     })
-// }
 
 self.addEventListener("install", function (event) {
   console.log("[Service Worker] Installing Service Worker ...", event);
@@ -87,7 +76,7 @@ self.addEventListener("fetch", function (event) {
           .then(function (data) {
             for (var key in data) {
               writeData("posts", data[key]);
-              console.log(data[key])
+              console.log(data[key]);
             }
           });
         return res;
